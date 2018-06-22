@@ -41,12 +41,12 @@ I don't use Cygwin for sensitive stuff so I don't mind it is more a testing envi
   
 ## Dependencies ##
 You will need this libraries for bspwm to work, you can install them via Cygwin setup or via apt-cyg if you have it:
-libxcb-util-devel
-libxcb-keysms-devel
-libxcb-iccm-devel
-libxcb-ewmh-devel
-libxcb-randr-devel
-libxcb-xinerama-devel
+ - libxcb-util-devel
+ - libxcb-keysms-devel
+ - libxcb-iccm-devel
+ - libxcb-ewmh-devel
+ - libxcb-randr-devel
+ - libxcb-xinerama-devel
 
 **This is the line from Makefile:**
 `LDLIBS    = $(LDFLAGS) -lm -lxcb -lxcb-util -lxcb-keysyms -lxcb-icccm -lxcb-ewmh -lxcb-randr -lxcb-xinerama`
