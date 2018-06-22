@@ -4,20 +4,21 @@ Bspwm 0.9.5 compiled for Cygwin, under Windows 7 using gcc compiler version 7.3.
 Original Bspwm repository by baskerville:
 https://github.com/baskerville/bspwm
 
-Tested with 64-bit Cygwin version 2.10.0
+Tested with 64-bit Cygwin version 2.10.0. 
 
+**I made this repo to backup my compiled cygwin, this is not an official Cygwin package!**
+
+## My adjustments ##
 Makefile was modified, if you run Cygwin without administrator rights (for instance under corporate Windows) you might run into all sorts of errors for instance the Chmod is not working beceause the file owner groups are not default Windows groups. None of the workarounds I have found worked for me so I have completely removed the Chmod actions from the Makefile which makes it **much less secure!!**. I recommed compiling the bspwm from the source if you are able to.
 
-I made this repo to backup my compiled cygwin, this is not an official Cygwin package!
 
-Here are some examples, maybe it can work for you:
+**Here are some examples how to make chmod work, maybe it can work for you:**
 https://stackoverflow.com/questions/17091972/chmod-cannot-change-group-permission-on-cygwin
+http://alexeymk.com/permission-denied-for-chmod-cygwin-on-windows/
 
-I don't use Cygwin for sensitive stuff so I don't mind it is more a testing environment for me.
+I don't use Cygwin for sensitive stuff so I don't mind it is more a testing environment for me. If Chmod works under your cygwin you can replace the Install part in the Makefile with the original:
 
-If Chmod works under your cygwin you can replace the Install part in the Makefile with the original:
-
-install:
+`install:
 	mkdir -p "$(DESTDIR)$(BINPREFIX)"
 	cp -pf bspwm "$(DESTDIR)$(BINPREFIX)"
 	cp -pf bspc "$(DESTDIR)$(BINPREFIX)"
@@ -36,6 +37,7 @@ install:
 	cp -pr examples/* "$(DESTDIR)$(DOCPREFIX)"/examples
 	mkdir -p "$(DESTDIR)$(XSESSIONS)"
 	cp -p contrib/freedesktop/bspwm.desktop "$(DESTDIR)$(XSESSIONS)"
+  `
   
 ## Dependencies ##
 You will need this libraries for bspwm to work, you can install them via Cygwin setup or via apt-cyg if you have it:
@@ -47,7 +49,7 @@ libxcb-randr-devel
 libxcb-xinerama-devel
 
 **This is the line from Makefile:**
-LDLIBS    = $(LDFLAGS) -lm -lxcb -lxcb-util -lxcb-keysyms -lxcb-icccm -lxcb-ewmh -lxcb-randr -lxcb-xinerama
+`LDLIBS    = $(LDFLAGS) -lm -lxcb -lxcb-util -lxcb-keysyms -lxcb-icccm -lxcb-ewmh -lxcb-randr -lxcb-xinerama`
 
 In case you run into some issues, you can try to compile the bspwm by yourself from the original repository:
 https://github.com/baskerville/bspwm
